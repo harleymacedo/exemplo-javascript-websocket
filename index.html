@@ -11,7 +11,7 @@
   </head>
   <body>
     <div>
-      <input id="input1" type="text" placeholder="Digite sua mensagem aqui" />
+      <input id="input1" type="text" placeholder="Digite aqui" />
       <input id="button1" type="button" value="Enviar" onclick="enviar()" />
     </div>
     
@@ -25,7 +25,6 @@
       var socket = io();
 
       function enviar() {
-        console.log("chamou enviar")
         var input = document.getElementById('input1');
         if (input.value) {
           socket.emit('mensageiro', input.value);
