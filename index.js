@@ -15,6 +15,10 @@ io.on('connection', (socket) => {
   socket.on('mensageiro', (msg) => {
     io.emit('mensageiro', msg);
   });
+
+  socket.on('sincronizarConteudo', (conteudo) => {
+    io.emit('sincronizarConteudo', conteudo);
+  });
 });
 
 server.listen(port, () => {
