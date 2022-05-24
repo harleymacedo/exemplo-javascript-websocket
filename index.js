@@ -11,6 +11,7 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', (socket) => {
+  console.log("novo usuário conectado");
   socket.on('mensageiro', (msg) => {
     io.emit('mensageiro', msg);
   });
