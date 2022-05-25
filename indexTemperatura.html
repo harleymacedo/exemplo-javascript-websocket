@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Socket.IO - Temperatura</title>
+    <style>
+      
+    </style>
+  </head>
+  <body>
+    
+    <div id="div1" class="div1">
+      <p>Temperatura: </p>
+      <p id="pTemperatura"></p>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+      var socket = io();
+
+      socket.on('mudouTemperatura', function(novaTemperatura) {
+        let pTemperatura = document.getElementById("pTemperatura");
+        pTemperatura.textContent = novaTemperatura + "graus celcius";
+      });
+    </script>
+  </body>
+</html>

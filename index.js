@@ -10,6 +10,10 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
+app.get('/temperatura', (req, res) => {
+  res.sendFile(__dirname + '/indexTemperatura.html');
+});
+
 io.on('connection', (socket) => {
   console.log("novo usuário conectado");
   socket.on('mensageiro', (msg) => {
@@ -18,6 +22,15 @@ io.on('connection', (socket) => {
 
   socket.on('sincronizarConteudo', (conteudo) => {
     io.emit('sincronizarConteudo', conteudo);
+  });
+
+  socket.on('carroAndou', (novaLocalizacao) => {
+    io.emit('carroAndou', novaLocalizacao);
+  });
+
+  socket.on('mudouTemperatura', (novaTemperatura) => {
+    console.log('servidor notificado: mudouTemperatura');
+    io.emit('mudouTemperatura', novaTemperatura);
   });
 });
 
